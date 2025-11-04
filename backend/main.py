@@ -35,13 +35,31 @@ app = FastAPI(
 )
 
 # CORS configuration
+# When using "*" for origins, we cannot use allow_credentials=True
+# So we explicitly allow common localhost origins for Streamlit
+cors_origins = settings.CORS_ORIGINS
+if "*" in cors_origins or len(cors_origins) == 1 and cors_origins[0] == "*":
+    # Allow all origins but disable credentials (or use specific origins)
+    cors_origins = [
+        "http://localhost:8501",  # Streamlit default
+        "http://localhost:8502",  # Streamlit alternative
+        "http://127.0.0.1:8501",
+        "http://127.0.0.1:8502",
+        "http://localhost:8000",  # Direct API access
+        "http://127.0.0.1:8000",
+    ]
+    allow_creds = False
+else:
+    allow_creds = True
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS if "*" not in settings.CORS_ORIGINS else ["*"],
-    allow_credentials=True,
+    allow_origins=cors_origins,
+    allow_credentials=allow_creds,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+logger.info(f"CORS configured with origins: {cors_origins}")
 
 # Include routers
 app.include_router(papers.router, prefix="/papers", tags=["Papers"])

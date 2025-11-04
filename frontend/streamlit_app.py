@@ -67,11 +67,18 @@ def check_api_health():
     """Check if API is running"""
     try:
         response = requests.get(f"{API_BASE_URL}/health", timeout=5)
-        return response.status_code == 200, response.json() if response.status_code == 200 else None
+        if response.status_code == 200:
+            return True, response.json()
+        elif response.status_code == 403:
+            return False, {"error": "403 Forbidden - CORS issue", "status_code": 403}
+        else:
+            return False, {"error": f"Status {response.status_code}", "status_code": response.status_code}
     except requests.exceptions.ConnectionError:
-        return False, None
+        return False, {"error": "Connection refused - Backend not running"}
+    except requests.exceptions.Timeout:
+        return False, {"error": "Request timeout"}
     except Exception as e:
-        return False, None
+        return False, {"error": str(e)}
 
 def upload_paper(file):
     """Upload paper to API"""
@@ -151,16 +158,38 @@ def main():
                     st.json(health_data)
         else:
             st.error("❌ API is not accessible")
-            st.markdown("""
-            <div class="warning-box">
-            <strong>⚠️ Backend not running!</strong><br><br>
-            To start the backend:<br>
-            1. Open a terminal<br>
-            2. Navigate to <code>backend</code> folder<br>
-            3. Run: <code>uvicorn main:app --reload</code><br><br>
-            Or use: <code>python -m uvicorn main:app --reload</code>
-            </div>
-            """, unsafe_allow_html=True)
+            error_msg = health_data.get("error", "Unknown error") if health_data else "Unknown error"
+            
+            if "403" in error_msg or "Forbidden" in error_msg:
+                st.markdown("""
+                <div class="error-box">
+                <strong>🔒 403 Forbidden - CORS Issue!</strong><br><br>
+                This is a CORS (Cross-Origin) configuration problem.<br><br>
+                <strong>Solution:</strong><br>
+                1. Stop the backend server (Ctrl+C)<br>
+                2. Restart it with: <code>uvicorn main:app --reload</code><br>
+                3. The CORS settings have been updated to allow Streamlit<br><br>
+                If the issue persists, check the backend logs.
+                </div>
+                """, unsafe_allow_html=True)
+            elif "Connection refused" in error_msg:
+                st.markdown("""
+                <div class="warning-box">
+                <strong>⚠️ Backend not running!</strong><br><br>
+                To start the backend:<br>
+                1. Open a terminal<br>
+                2. Navigate to <code>backend</code> folder<br>
+                3. Run: <code>uvicorn main:app --reload</code><br><br>
+                Or use: <code>python -m uvicorn main:app --reload</code>
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown(f"""
+                <div class="warning-box">
+                <strong>⚠️ Connection Error:</strong> {error_msg}<br><br>
+                Please check that the backend is running on port 8000.
+                </div>
+                """, unsafe_allow_html=True)
         
         st.markdown("---")
         st.markdown("### 📚 Navigation")
