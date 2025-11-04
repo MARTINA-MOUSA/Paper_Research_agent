@@ -1,38 +1,39 @@
 # Core framework
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
-gunicorn>=21.2.0
+fastapi
+uvicorn
+gunicorn
 
 # File upload & parsing
-python-multipart>=0.0.6
-pdfminer.six>=20221105
-python-magic>=0.4.27
+python-multipart
+pdfminer.six
+python-magic
 
 # Google Gemini API
-google-generativeai>=0.3.0
+google-generativeai
 
 # Summarization and NLP (backup if Gemini unavailable)
-transformers>=4.35.0
-torch>=2.1.0
-sentencepiece>=0.1.99
+transformers
+torch
+sentencepiece
 
 # Video and audio generation
-moviepy>=1.0.3
-gTTS>=2.4.0
+moviepy
+gTTS
 
 # Configuration
-python-dotenv>=1.0.0
-pydantic>=2.5.0
-pydantic-settings>=2.1.0
+python-dotenv
+pydantic
+pydantic-settings
 
 # Logging
-loguru>=0.7.2
+loguru
 
 # Database
-sqlalchemy>=2.0.23
+sqlalchemy
 
 # RSS/API
-feedparser>=6.0.10
+feedparser
 
 # Production
-httpx>=0.25.0
+httpx
+
