@@ -43,39 +43,55 @@ Paper2Video
 
 ## Local Development
 
+### Quick Start
+
+**See `START_HERE.md` for detailed step-by-step instructions!**
+
 ### Backend Setup
 
-1. **Create environment file with Gemini API key:**
-```bash
-backend/.env
-GEMINI_API_KEY=YOUR_API_KEY
-```
-
-2. **Install dependencies:**
+1. **Navigate to backend directory:**
 ```bash
 cd backend
+```
+
+2. **Create environment file with Gemini API key:**
+   - Create `.env` file in `backend` folder
+   - Add: `GEMINI_API_KEY=YOUR_API_KEY`
+
+3. **Install dependencies:**
+```bash
 pip install -r requirements.txt
 ```
 
-3. **Run the server:**
-```bash
-uvicorn main:app --reload
-```
+4. **Run the server:**
+   - **Windows:** `start_backend.bat`
+   - **Linux/Mac:** `./start_backend.sh`
+   - **Or manually:** `uvicorn main:app --reload`
+
+   Server runs at: `http://localhost:8000`
 
 ### Frontend Setup (Streamlit)
 
-1. **Install frontend dependencies:**
+1. **Open a NEW terminal** (keep backend running)
+
+2. **Navigate to frontend directory:**
 ```bash
 cd frontend
+```
+
+3. **Install frontend dependencies:**
+```bash
 pip install -r requirements.txt
 ```
 
-2. **Run Streamlit app:**
-```bash
-streamlit run streamlit_app.py
-```
+4. **Run Streamlit app:**
+   - **Windows:** `run.bat`
+   - **Linux/Mac:** `./run.sh`
+   - **Or manually:** `streamlit run streamlit_app.py`
 
-The app will open at `http://localhost:8501`
+   App opens at: `http://localhost:8501`
+
+**⚠️ Important:** Both backend and frontend must be running simultaneously!
 
 ### Testing Endpoints
 
