@@ -19,7 +19,6 @@ sentencepiece
 # Video and audio generation
 moviepy
 gTTS
-
 # Configuration
 python-dotenv
 pydantic

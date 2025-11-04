@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     MAX_SECTIONS: int = 20
     
     # Gemini
-    GEMINI_MODEL: str = "gemini-1.5-flash"
+    GEMINI_MODEL: str = "gemini-1.0-pro"
     
     # Logging
     LOG_LEVEL: str = "INFO"
