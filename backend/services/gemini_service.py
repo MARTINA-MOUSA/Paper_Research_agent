@@ -1,5 +1,4 @@
 import google.generativeai as genai
-import os
 from typing import List, Dict
 from config import settings
 from loguru import logger
@@ -10,27 +9,31 @@ else:
     genai.configure(api_key=settings.GEMINI_API_KEY)
 
 def _get_model(model_name: str = None):
+    """Get Gemini model instance"""
     if model_name is None:
         model_name = settings.GEMINI_MODEL
     return genai.GenerativeModel(model_name)
 
 def summarize_with_gemini(text: str) -> str:
     """
-    يأخذ نص بحث علمي ويولد ملخص ذكي باستخدام Gemini API
+    Generate a smart summary of research paper text using Gemini API
+    Returns Arabic summary
     """
     try:
         if not settings.GEMINI_API_KEY:
             raise ValueError("GEMINI_API_KEY not configured")
         
         model = _get_model()
-        prompt = f"""
-        أنت مساعد أكاديمي ذكي. لخص النص الآتي بشكل منظم وواضح:
-        - المقدمة
-        - المشكلة
-        - المنهجية
-        - النتائج
-        - الاستنتاج
-        النص:
+        prompt = f"""You are an intelligent academic assistant. Summarize the following research paper text in Arabic in a clear and organized manner:
+        - Introduction
+        - Problem
+        - Methodology
+        - Results
+        - Conclusion
+        
+        Write the summary in Arabic language only.
+        
+        Text:
         {text}
         """
         response = model.generate_content(prompt)
@@ -43,16 +46,18 @@ def summarize_with_gemini(text: str) -> str:
 
 def segment_paper(text: str) -> List[Dict[str, str]]:
     """
-    يقسم الورقة إلى أقسام منطقية مع شرح مبسط لكل قسم
-    Returns: List of {"title": str, "summary": str}
+    Segment paper into logical sections with simple explanation for each section
+    Returns: List of {"title": str, "summary": str} - all in Arabic
     """
     model = _get_model()
-    prompt = f"""
-    اقسم النص التالي الخاص بورقة علمية إلى أقسام رئيسية. لكل قسم أعط:
-    - عنوان قصير
-    - ملخص مبسط بالعربية لجمهور عام
-    أعد النتيجة بصيغة JSON list من عناصر تحتوي على المفاتيح: title, summary فقط.
-    النص:
+    prompt = f"""Divide the following research paper text into main sections. For each section provide:
+    - A short title (in Arabic)
+    - A simple summary in Arabic for general audience
+    
+    Return the result as a JSON list with elements containing only the keys: "title" and "summary".
+    All text must be in Arabic.
+    
+    Text:
     {text}
     """
     response = model.generate_content(prompt)
@@ -72,7 +77,7 @@ def segment_paper(text: str) -> List[Dict[str, str]]:
     return [{"title": "Overall", "summary": summarize_with_gemini(text)}]
 
 def classify_field_with_gemini(text: str) -> str:
-    """يتنبأ بمجال الورقة داخل AI (NLP, CV, RL, ...)."""
+    """Classify paper into AI field categories (NLP, CV, RL, etc.)"""
     model = _get_model()
     fields = [
         "Natural Language Processing (NLP)",
@@ -83,11 +88,12 @@ def classify_field_with_gemini(text: str) -> str:
         "Machine Learning Theory",
     ]
     constraint = ", ".join(fields)
-    prompt = f"""
-    من النص التالي، حدد المجال الأكثر مناسبة ضمن الخيارات التالية فقط:
+    prompt = f"""From the following text, determine the most suitable field from these options only:
     {constraint}
-    أعد الإجابة كاسم مجال واحد فقط بدون شرح.
-    النص:
+    
+    Return only the field name without any explanation.
+    
+    Text:
     {text}
     """
     response = model.generate_content(prompt)
@@ -99,18 +105,20 @@ def classify_field_with_gemini(text: str) -> str:
 
 def generate_video_script(sections: List[Dict[str, str]]) -> List[Dict[str, str]]:
     """
-    ينتج سيناريو فيديو بسيط: لكل قسم -> نص صوتي (narration) ونص على الشاشة (overlay)
-    Returns list of scenes: {"overlay": str, "narration": str}
+    Generate video script: for each section -> narration text (Arabic) and on-screen text (overlay)
+    Returns list of scenes: {"overlay": str, "narration": str} - all in Arabic
     """
     model = _get_model()
     joined = "\n\n".join([f"{s['title']}: {s['summary']}" for s in sections])
-    prompt = f"""
-    حول الملخصات التالية إلى مخطط فيديو تعليمي قصير.
-    لكل مشهد أعط:
-    - overlay: نص قصير يظهر على الشاشة
-    - narration: نص التعليق الصوتي (مقروء للعربية الفصحى المبسطة)
-    أعد الناتج كـ JSON list لعناصر تحتوي overlay و narration فقط.
-    النص:
+    prompt = f"""Convert the following summaries into a short educational video script.
+    For each scene provide:
+    - overlay: Short text to display on screen (in Arabic)
+    - narration: Voice-over narration text (in Modern Standard Arabic, simple and clear)
+    
+    Return the result as a JSON list with elements containing only "overlay" and "narration" keys.
+    All text must be in Arabic.
+    
+    Text:
     {joined}
     """
     response = model.generate_content(prompt)
@@ -125,19 +133,19 @@ def generate_video_script(sections: List[Dict[str, str]]) -> List[Dict[str, str]
                 narration = (sc.get("narration") or overlay).strip()
                 if overlay or narration:
                     normalized.append({"overlay": overlay, "narration": narration})
-        return normalized or [{"overlay": s.get("title", "مشهد"), "narration": s.get("summary", "")} for s in sections]
+        return normalized or [{"overlay": s.get("title", "Scene"), "narration": s.get("summary", "")} for s in sections]
     except Exception:
-        return [{"overlay": s.get("title", "مشهد"), "narration": s.get("summary", "")} for s in sections]
+        return [{"overlay": s.get("title", "Scene"), "narration": s.get("summary", "")} for s in sections]
 
 def extract_keywords(text: str, k: int = 8) -> List[str]:
+    """Extract keywords from text"""
     model = _get_model()
-    prompt = f"""
-    استخرج {k} كلمات مفتاحية فقط من النص التالي. أعدها كسطر واحد مفصول بفواصل.
-    النص:
+    prompt = f"""Extract exactly {k} keywords from the following text. Return them as a single line separated by commas.
+    
+    Text:
     {text}
     """
     response = model.generate_content(prompt)
     raw = response.text if response and getattr(response, "text", None) else ""
     parts = [p.strip() for p in raw.replace("\n", ",").split(",")]
     return [p for p in parts if p][:k]
-

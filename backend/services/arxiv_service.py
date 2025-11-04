@@ -44,5 +44,3 @@ def fetch_trending(category: str = "cs.LG", max_results: int = 10) -> List[Dict[
     except Exception as e:
         logger.error(f"Error fetching from arXiv: {e}", exc_info=True)
         return []
-
-
