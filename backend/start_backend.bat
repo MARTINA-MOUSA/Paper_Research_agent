@@ -8,13 +8,27 @@ echo.
 
 REM Check for .env file
 if not exist .env (
-    echo [WARNING] .env file not found!
+    echo [ERROR] .env file not found!
     echo.
-    echo Please create .env file with:
+    echo Run CREATE_ENV.bat to create it, or create manually.
+    echo.
+    echo Minimum required:
     echo   GEMINI_API_KEY=your_api_key_here
     echo.
-    echo Press any key to continue anyway...
-    pause >nul
+    pause
+    exit /b 1
+)
+
+REM Check if GEMINI_API_KEY is set
+findstr /C:"GEMINI_API_KEY=your_api_key_here" .env >nul 2>&1
+if %errorlevel% == 0 (
+    echo [WARNING] GEMINI_API_KEY is not configured!
+    echo.
+    echo Please edit .env file and add your API key.
+    echo Get it from: https://makersuite.google.com/app/apikey
+    echo.
+    choice /C YN /M "Continue anyway"
+    if errorlevel 2 exit /b 1
 )
 
 REM Check if port 8000 is in use

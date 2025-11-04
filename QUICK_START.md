@@ -1,9 +1,115 @@
-# 🚀 Quick Start - Fix Connection Error
+# 🚀 Quick Start - Installation & Setup
 
-## The Problem
-You're seeing: **"Connection refused"** or **"Failed to establish a new connection"**
+## 🔧 First Time Setup
 
-**This means: The backend server is NOT running!**
+### If you see "ModuleNotFoundError" or missing dependencies:
+
+**Run the setup script:**
+```bash
+cd backend
+SETUP.bat
+```
+
+This will:
+1. Create `.env` file
+2. Install all dependencies
+3. Verify everything is ready
+
+**Or install manually:**
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+### If you see "GEMINI_API_KEY not set":
+
+1. Create `.env` file in `backend` folder:
+   ```bash
+   cd backend
+   CREATE_ENV.bat
+   ```
+2. Edit `.env` and add your API key:
+   ```
+   GEMINI_API_KEY=your_actual_api_key_here
+   ```
+3. Get API key from: https://makersuite.google.com/app/apikey
+
+## 🚀 Starting the Application
+
+### Step 1: Install Dependencies (First time only)
+
+**If dependencies are missing:**
+```bash
+cd backend
+INSTALL_DEPENDENCIES.bat
+```
+
+**Or manually:**
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+### Step 2: Configure Environment
+
+**Create .env file:**
+```bash
+cd backend
+CREATE_ENV.bat
+```
+
+Then edit `.env` and add your Gemini API key.
+
+### Step 3: Start Backend
+
+**Easiest way:**
+```bash
+cd backend
+START_BACKEND.bat
+```
+
+**Or manually:**
+```bash
+cd backend
+uvicorn main:app --reload
+```
+
+Wait for: `Uvicorn running on http://0.0.0.0:8000`
+
+### Step 4: Start Frontend (NEW terminal)
+
+```bash
+cd frontend
+streamlit run streamlit_app.py
+```
+
+## ❌ Common Errors & Fixes
+
+### Error: "ModuleNotFoundError: No module named 'moviepy'"
+**Fix:** Install dependencies
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+### Error: "GEMINI_API_KEY not set"
+**Fix:** Create `.env` file with your API key
+```bash
+cd backend
+CREATE_ENV.bat
+# Then edit .env and add your key
+```
+
+### Error: "Connection refused"
+**Fix:** Backend is not running - start it first!
+```bash
+cd backend
+START_BACKEND.bat
+```
+
+### Error: "Python version past end of life"
+**Warning (not critical):** Python 3.9.6 works but 3.10+ is recommended.
+The app will still work, but consider upgrading Python later.
 
 ## ✅ The Solution
 
