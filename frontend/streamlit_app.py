@@ -200,17 +200,27 @@ def main():
     
     # Show warning if API is not running
     if not is_healthy:
-        st.warning("""
-        ⚠️ **Backend API is not running!**
+        st.error("""
+        ## 🔴 CRITICAL: Backend API is NOT Running!
         
-        Please start the backend server first:
+        **You cannot use this app until the backend is started.**
         
-        1. Open a new terminal/command prompt
-        2. Navigate to the `backend` directory:
+        ### Steps to Start Backend:
+        
+        **Method 1 - Quick Start (Recommended):**
+        ```bash
+        # From project root folder
+        cd backend
+        start_backend.bat
+        ```
+        
+        **Method 2 - Manual Start:**
+        1. Open a **NEW** terminal/command prompt (keep it open!)
+        2. Navigate to backend:
            ```bash
-           cd backend
+           cd C:\Users\DELL\Desktop\paper2video\backend
            ```
-        3. Make sure you have a `.env` file with your Gemini API key:
+        3. Verify `.env` file exists with:
            ```
            GEMINI_API_KEY=your_api_key_here
            ```
@@ -218,12 +228,31 @@ def main():
            ```bash
            uvicorn main:app --reload
            ```
+        5. **Wait** until you see:
+           ```
+           Application startup complete.
+           Uvicorn running on http://0.0.0.0:8000
+           ```
+        6. **Keep that terminal window open!**
         
-        The API should be running at `http://localhost:8000`
+        ### Verify Backend is Running:
+        - Open: http://localhost:8000/health in your browser
+        - Or run: `python check_backend.py` from project root
+        - Should show: ✅ Backend is running!
+        
+        **Once backend is running, click the button below to refresh:**
         """)
         
-        if st.button("🔄 Recheck API Status"):
-            st.rerun()
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🔄 Recheck API Status", type="primary"):
+                st.rerun()
+        with col2:
+            if st.button("📋 Copy Backend Command"):
+                st.code("cd backend && uvicorn main:app --reload", language="bash")
+                st.success("Command copied! Run this in a terminal.")
+        
+        st.stop()  # Stop execution if backend is not running
     
     # Main content based on selected page
     if page == "Upload Paper":

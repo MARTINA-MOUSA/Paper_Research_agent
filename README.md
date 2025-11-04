@@ -53,10 +53,18 @@ start_all.bat
 ```
 This will start both backend and frontend automatically!
 
-**Or verify backend is running:**
+**Or start backend only:**
+```bash
+# Double-click or run:
+backend/START_BACKEND.bat
+```
+
+**Verify backend is running:**
 ```bash
 python check_backend.py
 ```
+
+**⚠️ IMPORTANT:** Backend MUST be running before using the frontend! See `QUICK_START.md` for help.
 
 ### Backend Setup
 
