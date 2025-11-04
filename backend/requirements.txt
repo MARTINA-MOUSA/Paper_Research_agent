@@ -1,0 +1,29 @@
+# Core framework
+fastapi
+uvicorn
+
+# File upload & parsing
+python-multipart
+pdfminer.six
+
+# Google Gemini API
+google-generativeai
+
+# Summarization and NLP (backup if Gemini unavailable)
+transformers
+torch
+sentencepiece
+
+# Video and audio generation
+moviepy
+gTTS
+feedparser
+
+# Utilities
+python-dotenv
+pydantic
+loguru
+
+# Database (optional, for tracking papers/trends)
+sqlalchemy
+
