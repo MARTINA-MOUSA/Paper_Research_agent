@@ -8,6 +8,12 @@ Paper2Video
 
 ## Architecture
 
+### Frontend
+- `frontend/streamlit_app.py`: Streamlit web interface with three main pages:
+  - **Upload Paper**: Upload PDF, view results, watch/download video
+  - **Classify Text**: Quick text classification into AI fields
+  - **Trending Papers**: Browse arXiv trending papers with auto-classification
+
 ### Backend Structure
 - `services/pdf_parser.py`: Extract text from PDF files.
 - `services/gemini_service.py`: Gemini API functions
@@ -37,7 +43,7 @@ Paper2Video
 
 ## Local Development
 
-### Setup
+### Backend Setup
 
 1. **Create environment file with Gemini API key:**
 ```bash
@@ -56,11 +62,28 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
+### Frontend Setup (Streamlit)
+
+1. **Install frontend dependencies:**
+```bash
+cd frontend
+pip install -r requirements.txt
+```
+
+2. **Run Streamlit app:**
+```bash
+streamlit run streamlit_app.py
+```
+
+The app will open at `http://localhost:8501`
+
 ### Testing Endpoints
 
 - Upload paper: `POST /papers/upload` (multipart file)
 - Classify text: `POST /classify/field` body = raw text
 - arXiv trends: `GET /trends/trending?category=cs.LG&limit=10`
+
+Or use the Streamlit frontend for a user-friendly interface!
 
 ## Notes
 
