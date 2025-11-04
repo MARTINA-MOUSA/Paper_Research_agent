@@ -1,29 +1,45 @@
 import google.generativeai as genai
 import os
 from typing import List, Dict
+from config import settings
+from loguru import logger
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+if not settings.GEMINI_API_KEY:
+    logger.warning("GEMINI_API_KEY not set")
+else:
+    genai.configure(api_key=settings.GEMINI_API_KEY)
 
-def _get_model(model_name: str = "gemini-1.5-flash"):
+def _get_model(model_name: str = None):
+    if model_name is None:
+        model_name = settings.GEMINI_MODEL
     return genai.GenerativeModel(model_name)
 
 def summarize_with_gemini(text: str) -> str:
     """
     يأخذ نص بحث علمي ويولد ملخص ذكي باستخدام Gemini API
     """
-    model = _get_model()
-    prompt = f"""
-    أنت مساعد أكاديمي ذكي. لخص النص الآتي بشكل منظم وواضح:
-    - المقدمة
-    - المشكلة
-    - المنهجية
-    - النتائج
-    - الاستنتاج
-    النص:
-    {text}
-    """
-    response = model.generate_content(prompt)
-    return response.text if response and getattr(response, "text", None) else "No summary generated."
+    try:
+        if not settings.GEMINI_API_KEY:
+            raise ValueError("GEMINI_API_KEY not configured")
+        
+        model = _get_model()
+        prompt = f"""
+        أنت مساعد أكاديمي ذكي. لخص النص الآتي بشكل منظم وواضح:
+        - المقدمة
+        - المشكلة
+        - المنهجية
+        - النتائج
+        - الاستنتاج
+        النص:
+        {text}
+        """
+        response = model.generate_content(prompt)
+        result = response.text if response and getattr(response, "text", None) else "No summary generated."
+        logger.debug("Summary generated successfully")
+        return result
+    except Exception as e:
+        logger.error(f"Error generating summary: {e}")
+        raise
 
 def segment_paper(text: str) -> List[Dict[str, str]]:
     """
