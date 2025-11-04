@@ -37,7 +37,7 @@ app = FastAPI(
 # CORS configuration
 # When using "*" for origins, we cannot use allow_credentials=True
 # So we explicitly allow common localhost origins for Streamlit
-cors_origins = settings.CORS_ORIGINS
+cors_origins = settings.cors_origins_list
 if "*" in cors_origins or len(cors_origins) == 1 and cors_origins[0] == "*":
     # Allow all origins but disable credentials (or use specific origins)
     cors_origins = [
@@ -60,6 +60,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 logger.info(f"CORS configured with origins: {cors_origins}")
+logger.info(f"GEMINI_API_KEY configured: {'Yes' if settings.GEMINI_API_KEY else 'No'}")
 
 # Include routers
 app.include_router(papers.router, prefix="/papers", tags=["Papers"])

@@ -11,9 +11,19 @@ if exist venv\Scripts\activate.bat (
     echo Activating virtual environment...
     call venv\Scripts\activate.bat
     echo.
+    echo Virtual environment activated!
+    echo.
 ) else (
     echo [INFO] No virtual environment found, installing globally...
     echo.
+)
+
+REM Verify we're in the right directory
+if not exist requirements.txt (
+    echo [ERROR] requirements.txt not found!
+    echo Please run this script from the backend directory.
+    pause
+    exit /b 1
 )
 
 echo Installing required packages...

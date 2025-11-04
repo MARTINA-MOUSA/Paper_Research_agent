@@ -16,6 +16,10 @@ if exist .env (
 
 echo Creating .env file...
 echo.
+echo Make sure you are in the backend directory!
+echo Current directory: %CD%
+echo.
+pause
 
 (
 echo # Gemini API Key - REQUIRED
