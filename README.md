@@ -47,6 +47,17 @@ Paper2Video
 
 **See `START_HERE.md` for detailed step-by-step instructions!**
 
+**Windows Users - Easiest way:**
+```bash
+start_all.bat
+```
+This will start both backend and frontend automatically!
+
+**Or verify backend is running:**
+```bash
+python check_backend.py
+```
+
 ### Backend Setup
 
 1. **Navigate to backend directory:**

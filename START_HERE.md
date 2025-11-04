@@ -4,7 +4,21 @@
 - Python 3.11+ installed
 - Gemini API key from Google AI Studio
 
-## Step 1: Setup Backend
+## ⚡ Quick Start (Windows)
+
+**Easiest way - run this single command:**
+```bash
+start_all.bat
+```
+
+This will:
+1. Check if backend is running, start it if not
+2. Start the Streamlit frontend
+3. Open both services automatically
+
+## Manual Setup
+
+### Step 1: Setup Backend
 
 1. **Navigate to backend directory:**
    ```bash
@@ -90,11 +104,36 @@
 - Check if port 8000 is already in use
 - Verify `.env` file exists with `GEMINI_API_KEY`
 - Make sure all dependencies are installed: `pip install -r requirements.txt`
+- Try running: `python check_backend.py` to verify backend status
 
-### Frontend can't connect to backend
-- Make sure backend is running on `http://localhost:8000`
-- Check the API Base URL in the sidebar
-- Verify backend is accessible: Open `http://localhost:8000/health` in browser
+### Frontend can't connect to backend (Connection Refused Error)
+**This means the backend is NOT running!**
+
+1. **Verify backend is running:**
+   ```bash
+   python check_backend.py
+   ```
+   This will tell you if the backend is accessible
+
+2. **If backend is not running:**
+   - Open a terminal
+   - Navigate to `backend` folder
+   - Run: `uvicorn main:app --reload`
+   - Wait until you see: "Application startup complete"
+   - Then try the frontend again
+
+3. **Check if port 8000 is free:**
+   - Windows: `netstat -ano | findstr :8000`
+   - Linux/Mac: `lsof -i :8000`
+   - If something is using it, either stop it or change the port
+
+### Frontend can't connect to backend (403 Forbidden Error)
+**This is a CORS issue - backend is running but blocking requests**
+
+1. Stop the backend (Ctrl+C)
+2. Restart it: `uvicorn main:app --reload`
+3. The CORS settings have been updated to allow Streamlit
+4. Refresh the Streamlit app
 
 ### Video generation fails
 - Ensure ffmpeg is installed (for video processing)
