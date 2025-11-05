@@ -8,11 +8,48 @@ if not settings.GEMINI_API_KEY:
 else:
     genai.configure(api_key=settings.GEMINI_API_KEY)
 
+_resolved_model_name = None
+
+def _resolve_model_name(preferred: str) -> str:
+    """Resolve a usable Gemini model name that supports generateContent."""
+    candidates = [
+        preferred,
+        "gemini-2.5-flash",
+        "gemini-2.0-flash-exp",
+        "gemini-1.5-flash-latest",
+        "gemini-1.5-flash-001",
+        "gemini-1.5-flash-8b-latest",
+        "gemini-1.5-pro-latest",
+    ]
+    try:
+        models = list(genai.list_models())
+        # Prefer models that support generateContent
+        supported = [
+            m.name for m in models
+            if getattr(m, "supported_generation_methods", None) and "generateContent" in m.supported_generation_methods
+        ]
+        # Map short names to fully qualified if needed
+        normalized_supported = set([
+            n.replace("models/", "") for n in supported
+        ])
+        for c in candidates:
+            short = c.replace("models/", "")
+            if short in normalized_supported:
+                return short
+    except Exception as e:
+        logger.debug(f"Could not list models, falling back to candidates: {e}")
+    # Fallback to the first candidate
+    return candidates[0]
+
 def _get_model(model_name: str = None):
-    """Get Gemini model instance"""
-    if model_name is None:
-        model_name = settings.GEMINI_MODEL
-    return genai.GenerativeModel(model_name)
+    """Get Gemini model instance with resilient model resolution"""
+    global _resolved_model_name
+    base = model_name or settings.GEMINI_MODEL
+    if not _resolved_model_name:
+        _resolved_model_name = _resolve_model_name(base)
+        if _resolved_model_name != base:
+            logger.info(f"Using Gemini model: {_resolved_model_name} (from {base})")
+    return genai.GenerativeModel(_resolved_model_name)
 
 def summarize_with_gemini(text: str) -> str:
     """
@@ -149,3 +186,14 @@ def extract_keywords(text: str, k: int = 8) -> List[str]:
     raw = response.text if response and getattr(response, "text", None) else ""
     parts = [p.strip() for p in raw.replace("\n", ",").split(",")]
     return [p for p in parts if p][:k]
+
+def translate_text(text: str, target_language: str) -> str:
+    """Translate given text to target language using Gemini."""
+    model = _get_model()
+    prompt = f"""Translate the following text to {target_language}. Preserve meaning and tone.
+
+Text:
+{text}
+"""
+    response = model.generate_content(prompt)
+    return response.text.strip() if response and getattr(response, "text", None) else text

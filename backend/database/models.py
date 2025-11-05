@@ -8,7 +8,7 @@ class Paper(Base):
     title = Column(String(512))
     abstract = Column(Text)
     field = Column(String(128))
-    keywords = Column(String(512))  # comma-separated
+    keywords = Column(String(512))  
     created_at = Column(DateTime, server_default=func.now())
 
 class Trend(Base):

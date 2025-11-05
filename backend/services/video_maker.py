@@ -1,9 +1,13 @@
-from moviepy.editor import TextClip, concatenate_videoclips, CompositeVideoClip, AudioFileClip, ColorClip
-from gtts import gTTS
 import tempfile
 import os
 from typing import List, Dict
 from loguru import logger
+
+os.environ["IMAGEMAGICK_BINARY"] = r"C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe"
+os.environ["IMAGE_MAGICK_CONVERT"] = os.environ["IMAGEMAGICK_BINARY"]
+
+from moviepy.editor import TextClip, concatenate_videoclips, CompositeVideoClip, AudioFileClip, ColorClip
+from gtts import gTTS
 
 def _estimate_duration(text: str) -> float:
     # Rough estimate: 140 wpm => ~2.33 wps => seconds = words / 2.33

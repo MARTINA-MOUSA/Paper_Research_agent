@@ -155,7 +155,7 @@ def upload_paper_page():
             if response and response.status_code == 200:
                 data = response.json()
                 
-                st.success("✅ Paper processed successfully!")
+                st.success(" Paper processed successfully!")
                 
                 # Display results in tabs
                 tab1, tab2, tab3, tab4, tab5 = st.tabs([

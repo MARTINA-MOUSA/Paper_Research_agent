@@ -21,13 +21,14 @@ class Settings(BaseSettings):
     MAX_FILE_SIZE: int = 10485760  # 10MB default
     UPLOAD_DIR: str = "uploads"
     OUTPUT_DIR: str = "outputs"
+    MAX_PDF_PAGES: int = 12
     
     # Processing limits
     MAX_TEXT_LENGTH: int = 50000
     MAX_SECTIONS: int = 20
     
     # Gemini
-    GEMINI_MODEL: str = "gemini-1.0-pro"
+    GEMINI_MODEL: str = "gemini-2.5-flash"
     
     # Logging
     LOG_LEVEL: str = "INFO"
@@ -52,8 +53,8 @@ settings = Settings()
 # Log if API key is loaded (don't show the key itself)
 if settings.GEMINI_API_KEY:
     from loguru import logger
-    logger.info(f"✅ GEMINI_API_KEY loaded from .env (length: {len(settings.GEMINI_API_KEY)} chars)")
+    logger.info(f" GEMINI_API_KEY loaded from .env (length: {len(settings.GEMINI_API_KEY)} chars)")
 else:
     from loguru import logger
-    logger.warning("⚠️ GEMINI_API_KEY not found in .env file!")
+    logger.warning(" GEMINI_API_KEY not found in .env file!")
 

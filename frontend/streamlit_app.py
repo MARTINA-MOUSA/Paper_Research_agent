@@ -69,6 +69,7 @@ st.markdown("""
 # CONFIGURATION
 # =============================
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
+REQUEST_TIMEOUT_DEFAULT = int(os.getenv("REQUEST_TIMEOUT", "600"))
 
 
 # =============================
@@ -92,11 +93,11 @@ def check_api_health():
         return False, {"error": str(e)}
 
 
-def upload_paper(file):
+def upload_paper(file, timeout_seconds: int):
     try:
         files = {"file": (file.name, file.getvalue(), "application/pdf")}
         with st.spinner("Processing paper... This may take a few minutes."):
-            response = requests.post(f"{API_BASE_URL}/papers/upload", files=files, timeout=300)
+            response = requests.post(f"{API_BASE_URL}/papers/upload", files=files, timeout=timeout_seconds)
         return response
     except requests.exceptions.ConnectionError:
         st.error("❌ Cannot connect to backend API. Please make sure the backend server is running on port 8000.")
@@ -131,6 +132,20 @@ def fetch_trending(category="cs.LG", limit=10):
         st.error(f"Error fetching trends: {str(e)}")
 
 
+def translate_text_api(text: str, target_language: str):
+    try:
+        payload = {"text": text, "target_language": target_language}
+        r = requests.post(f"{API_BASE_URL}/papers/translate", params=payload, timeout=60)
+        if r.status_code == 200:
+            return r.json().get("translated", "")
+        else:
+            st.error("Translation failed")
+            return ""
+    except Exception as e:
+        st.error(f"Translation error: {e}")
+        return ""
+
+
 # =============================
 # PAGE FUNCTIONS
 # =============================
@@ -144,12 +159,88 @@ def upload_paper_page(api_healthy):
         return
 
     uploaded_file = st.file_uploader("Choose a PDF file", type=["pdf"])
+    timeout_seconds = st.number_input("Request timeout (seconds)", min_value=60, max_value=3600, value=REQUEST_TIMEOUT_DEFAULT, step=30, help="Increase if your paper is long.")
+
     if uploaded_file and st.button("🚀 Process Paper", type="primary"):
-        response = upload_paper(uploaded_file)
+        response = upload_paper(uploaded_file, timeout_seconds=timeout_seconds)
         if response and response.status_code == 200:
-            data = response.json()
-            st.success("✅ Paper processed successfully!")
-            st.json(data)
+            resp = response.json()
+            job_id = resp.get("job_id")
+            if not job_id:
+                st.error("❌ Failed to start job.")
+                return
+            st.info(f"Job started: {job_id}")
+            progress = st.progress(0)
+            status_text = st.empty()
+            result_placeholder = st.empty()
+
+            import time
+            while True:
+                try:
+                    r = requests.get(f"{API_BASE_URL}/papers/status/{job_id}", timeout=30)
+                    if r.status_code != 200:
+                        status_text.error("Failed to fetch job status")
+                        break
+                    job = r.json()
+                    p = int(job.get("progress", 0))
+                    progress.progress(max(0, min(100, p)))
+                    status = job.get("status", "")
+                    if status == "done":
+                        status_text.success("✅ Completed")
+                        result = job.get("result", {})
+
+                        # Show Arabic summary directly
+                        summary = result.get("summary", "")
+                        st.subheader("📄 الملخص بالعربية")
+                        st.write(summary)
+
+                        # Translation controls
+                        with st.expander("🌐 ترجمة الملخص"):
+                            target_lang = st.text_input("اللغة المستهدفة", value="English")
+                            if st.button("ترجمة"):
+                                translated = translate_text_api(summary, target_lang)
+                                if translated:
+                                    st.text_area("الترجمة", translated, height=300)
+
+                        # Sections and script (optional raw view)
+                        with st.expander("🧩 Sections & Script (Raw)"):
+                            st.json({"sections": result.get("sections", []), "script": result.get("script", [])})
+
+                        # Inline video rendering
+                        video_url = result.get("video_url")
+                        if video_url:
+                            full_url = f"{API_BASE_URL}{video_url}"
+                            try:
+                                vr = requests.get(full_url, timeout=120)
+                                if vr.status_code == 200:
+                                    st.subheader("🎬 الفيديو")
+                                    st.video(vr.content)
+                                else:
+                                    st.warning("Could not fetch video bytes, showing link instead")
+                                    st.write(full_url)
+                            except Exception:
+                                st.warning("Could not fetch video bytes, showing link instead")
+                                st.write(full_url)
+
+                        # Keywords & Field
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.markdown("**🔎 Field**")
+                            st.write(result.get("field", "Unknown"))
+                        with col2:
+                            st.markdown("**🏷️ Keywords**")
+                            st.write(", ".join(result.get("keywords", [])))
+
+                        break
+                    elif status == "error":
+                        status_text.error("❌ Error: " + str(job.get("error", "Unknown")))
+                        break
+                    else:
+                        status_text.info(f"Status: {status} ({p}%)")
+                    time.sleep(2)
+                except Exception as e:
+                    status_text.error(f"Polling error: {e}")
+                    break
         else:
             st.error("❌ Failed to process paper.")
 
