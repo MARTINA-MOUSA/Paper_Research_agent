@@ -22,6 +22,18 @@ class Settings(BaseSettings):
     UPLOAD_DIR: str = "uploads"
     OUTPUT_DIR: str = "outputs"
     MAX_PDF_PAGES: int = 12
+    # Arabic dialect preference for script generation
+    ARABIC_DIALECT: str = "MSA"  # options: MSA, EGYPTIAN
+
+    # TTS Providers
+    TTS_PROVIDER: str = "gtts"  # options: gtts, azure, elevenlabs
+    # Azure Speech
+    AZURE_SPEECH_KEY: str = ""
+    AZURE_SPEECH_REGION: str = ""
+    AZURE_SPEECH_VOICE: str = "ar-EG-SalmaNeural"  # or ar-EG-ShakirNeural
+    # ElevenLabs
+    ELEVENLABS_API_KEY: str = ""
+    ELEVENLABS_VOICE_ID: str = ""  # Set a voice ID supporting Arabic
     
     # Processing limits
     MAX_TEXT_LENGTH: int = 50000
@@ -50,11 +62,7 @@ class Settings(BaseSettings):
 # Load settings - will read from .env file automatically
 settings = Settings()
 
-# Log if API key is loaded (don't show the key itself)
-if settings.GEMINI_API_KEY:
-    from loguru import logger
-    logger.info(f" GEMINI_API_KEY loaded from .env (length: {len(settings.GEMINI_API_KEY)} chars)")
-else:
-    from loguru import logger
-    logger.warning(" GEMINI_API_KEY not found in .env file!")
+# Log if API key is set (don't show the key itself)
+from loguru import logger
+logger.info(f" GEMINI_API_KEY present: {'Yes' if bool(settings.GEMINI_API_KEY) else 'No'}")
 

@@ -320,3 +320,281 @@
 2025-11-05 15:56:39.468 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
 2025-11-05 15:56:39.484 | INFO     | main:on_startup:107 - Starting Paper2Video API...
 2025-11-05 15:56:39.484 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 15:58:41.398 | INFO     | routers.papers:upload_paper:66 - Queued PDF for processing: 44c82e61-5ae4-4cdc-8568-57ef7a948d78.pdf
+2025-11-05 15:59:31.919 | INFO     | services.video_maker:make_video_from_scenes:25 - Creating video with 1 scenes
+2025-11-05 16:00:15.296 | INFO     | services.video_maker:make_video_from_scenes:82 - Concatenating video clips...
+2025-11-05 16:00:15.320 | INFO     | services.video_maker:make_video_from_scenes:85 - Writing video to outputs\video_9e5dc1cab0c54a68ba297c18e1f50ea4.mp4...
+2025-11-05 16:14:06.500 | INFO     | services.video_maker:make_video_from_scenes:102 - Video created successfully: outputs\video_9e5dc1cab0c54a68ba297c18e1f50ea4.mp4
+2025-11-05 16:14:06.516 | WARNING  | routers.papers:run_with_timeout:84 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 16:20:41.119 | INFO     | routers.papers:upload_paper:66 - Queued PDF for processing: a69030e1-cfc9-4d8a-aa9d-17c1f4bd89dc.pdf
+2025-11-05 16:21:30.332 | INFO     | services.video_maker:make_video_from_scenes:25 - Creating video with 1 scenes
+2025-11-05 16:22:08.971 | INFO     | services.video_maker:make_video_from_scenes:82 - Concatenating video clips...
+2025-11-05 16:22:08.988 | INFO     | services.video_maker:make_video_from_scenes:85 - Writing video to outputs\video_e9f2302e84df4549b00b7e717a740a05.mp4...
+2025-11-05 16:33:55.566 | INFO     | services.video_maker:make_video_from_scenes:102 - Video created successfully: outputs\video_e9f2302e84df4549b00b7e717a740a05.mp4
+2025-11-05 16:33:55.581 | WARNING  | routers.papers:run_with_timeout:84 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 16:42:03.070 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 16:42:12.728 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 16:42:12.728 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 16:42:12.737 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 16:42:12.745 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 16:42:21.213 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 16:42:24.614 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 16:42:24.614 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 16:42:24.621 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 16:42:24.622 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 16:42:32.308 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 16:42:35.493 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 16:42:35.493 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 16:42:35.501 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 16:42:35.501 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 16:42:38.014 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 16:42:40.883 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 16:42:40.883 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 16:42:40.891 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 16:42:40.891 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 16:42:53.890 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 16:42:55.632 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 16:42:55.632 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 16:42:55.632 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 16:42:55.648 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 16:43:30.953 | INFO     | routers.papers:upload_paper:66 - Queued PDF for processing: 313eaed6-1880-4f71-8a0b-a62673258fe9.pdf
+2025-11-05 16:44:22.630 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 16:44:59.753 | INFO     | services.video_maker:make_video_from_scenes:95 - Concatenating video clips...
+2025-11-05 16:44:59.769 | INFO     | services.video_maker:make_video_from_scenes:98 - Writing video to outputs\video_34c350a4c99248f099c2721dfdb932fe.mp4...
+2025-11-05 16:55:56.832 | INFO     | services.video_maker:make_video_from_scenes:115 - Video created successfully: outputs\video_34c350a4c99248f099c2721dfdb932fe.mp4
+2025-11-05 16:55:56.858 | WARNING  | routers.papers:run_with_timeout:84 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 16:58:20.887 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 16:58:30.310 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 16:58:30.310 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 16:58:30.318 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 16:58:30.327 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 16:58:47.818 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:01:55.055 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:01:55.055 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:01:55.055 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:01:55.075 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:02:50.797 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:02:50.812 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:02:50.812 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:02:50.812 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:03:18.253 | INFO     | routers.papers:upload_paper:66 - Queued PDF for processing: a0149b0e-72a1-4f33-9bcc-14be43ddaea8.pdf
+2025-11-05 17:04:01.098 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 17:04:58.112 | INFO     | services.video_maker:make_video_from_scenes:96 - Concatenating video clips...
+2025-11-05 17:04:58.128 | INFO     | services.video_maker:make_video_from_scenes:99 - Writing video to outputs\video_787ba48d52774a3696e29293a085dd35.mp4...
+2025-11-05 17:20:29.611 | INFO     | services.video_maker:make_video_from_scenes:116 - Video created successfully: outputs\video_787ba48d52774a3696e29293a085dd35.mp4
+2025-11-05 17:20:29.634 | WARNING  | routers.papers:run_with_timeout:84 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 17:43:30.353 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:43:40.478 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:43:40.478 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:43:40.486 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:43:40.500 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:43:53.703 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:43:57.962 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:43:57.963 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:43:57.969 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:43:57.973 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:43:59.478 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:44:02.203 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:44:02.203 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:44:02.212 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:44:02.212 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:44:14.428 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:44:16.491 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:44:16.491 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:44:16.511 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:44:16.513 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:54:04.014 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:54:04.014 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:54:04.030 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:54:04.030 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:54:32.328 | INFO     | routers.papers:upload_paper:68 - Queued PDF for processing: 5f8103db-210d-4584-aca6-eeaf5b1b496f.pdf
+2025-11-05 17:54:35.465 | WARNING  | routers.papers:run_with_timeout:86 - Step 'segment_paper' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:54:35.627 | WARNING  | routers.papers:run_with_timeout:86 - Step 'generate_video_script' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:54:35.827 | WARNING  | routers.papers:run_with_timeout:86 - Step 'classify_field_with_gemini' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:54:36.018 | WARNING  | routers.papers:run_with_timeout:86 - Step 'extract_keywords' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:54:38.149 | ERROR    | services.heygen_service:create_talking_photo_job:33 - HeyGen create job failed: 404 Client Error: NOT FOUND for url: https://api.heygen.com/v2/video/talking_photo
+2025-11-05 17:54:38.151 | ERROR    | routers.papers:process_job:149 - Job ba0135dda2434f8089abe81493302486 failed: HeyGen avatar generation failed
+2025-11-05 17:56:38.946 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:56:44.193 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:56:44.193 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:56:44.208 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:56:44.208 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:56:49.033 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:56:50.697 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:56:50.697 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:56:50.697 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:56:50.697 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:57:06.465 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 17:57:08.465 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 17:57:08.465 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 17:57:08.465 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 17:57:08.483 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 17:57:26.838 | INFO     | routers.papers:upload_paper:68 - Queued PDF for processing: 76fb1d17-f9e3-4656-8d29-67f50f6c3c82.pdf
+2025-11-05 17:57:29.817 | WARNING  | routers.papers:run_with_timeout:86 - Step 'segment_paper' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:57:29.961 | WARNING  | routers.papers:run_with_timeout:86 - Step 'generate_video_script' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:57:30.201 | WARNING  | routers.papers:run_with_timeout:86 - Step 'classify_field_with_gemini' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:57:30.385 | WARNING  | routers.papers:run_with_timeout:86 - Step 'extract_keywords' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:57:39.500 | ERROR    | services.heygen_service:create_talking_photo_job:53 - HeyGen create job failed: 404 Client Error: NOT FOUND for url: https://api.heygen.com/v2/video/talking_photo
+2025-11-05 17:57:39.503 | WARNING  | routers.papers:process_job:129 - HeyGen failed; falling back to static video maker
+2025-11-05 17:57:39.504 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 17:57:40.489 | INFO     | services.video_maker:make_video_from_scenes:96 - Concatenating video clips...
+2025-11-05 17:57:40.501 | INFO     | services.video_maker:make_video_from_scenes:99 - Writing video to outputs\video_b585a084bfa24e26a506c0359f341356.mp4...
+2025-11-05 17:57:55.681 | INFO     | services.video_maker:make_video_from_scenes:116 - Video created successfully: outputs\video_b585a084bfa24e26a506c0359f341356.mp4
+2025-11-05 17:57:55.841 | ERROR    | services.gemini_service:summarize_with_gemini:81 - Error generating summary: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 17:57:55.841 | WARNING  | routers.papers:run_with_timeout:86 - Step 'summarize_with_gemini' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 18:02:24.738 | INFO     | routers.papers:upload_paper:68 - Queued PDF for processing: 7f1cc974-d8fc-459b-9fef-7d3c7d0b81ff.pdf
+2025-11-05 18:02:27.541 | WARNING  | routers.papers:run_with_timeout:86 - Step 'segment_paper' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 18:02:27.693 | WARNING  | routers.papers:run_with_timeout:86 - Step 'generate_video_script' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 18:02:27.872 | WARNING  | routers.papers:run_with_timeout:86 - Step 'classify_field_with_gemini' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 18:02:28.038 | WARNING  | routers.papers:run_with_timeout:86 - Step 'extract_keywords' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 18:02:36.940 | ERROR    | services.heygen_service:create_talking_photo_job:53 - HeyGen create job failed: 404 Client Error: NOT FOUND for url: https://api.heygen.com/v2/video/talking_photo
+2025-11-05 18:02:36.940 | WARNING  | routers.papers:process_job:129 - HeyGen failed; falling back to static video maker
+2025-11-05 18:02:36.940 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 18:02:38.220 | INFO     | services.video_maker:make_video_from_scenes:96 - Concatenating video clips...
+2025-11-05 18:02:38.236 | INFO     | services.video_maker:make_video_from_scenes:99 - Writing video to outputs\video_7b9d30b3c9584cdbbb9671179b08ebbc.mp4...
+2025-11-05 18:02:53.417 | INFO     | services.video_maker:make_video_from_scenes:116 - Video created successfully: outputs\video_7b9d30b3c9584cdbbb9671179b08ebbc.mp4
+2025-11-05 18:02:53.608 | ERROR    | services.gemini_service:summarize_with_gemini:81 - Error generating summary: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 18:02:53.608 | WARNING  | routers.papers:run_with_timeout:86 - Step 'summarize_with_gemini' failed or timed out: 403 Your API key was reported as leaked. Please use another API key.
+2025-11-05 18:03:53.242 | INFO     | main:<module>:62 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:03:53.242 | INFO     | main:<module>:63 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:03:53.242 | INFO     | main:on_startup:107 - Starting Paper2Video API...
+2025-11-05 18:03:53.258 | INFO     | main:on_startup:112 - Application started successfully
+2025-11-05 18:04:18.130 | INFO     | routers.papers:upload_paper:68 - Queued PDF for processing: 3ff6d509-56a7-4d26-b18e-f5e549538739.pdf
+2025-11-05 18:06:19.575 | ERROR    | services.heygen_service:create_talking_photo_job:53 - HeyGen create job failed: 404 Client Error: NOT FOUND for url: https://api.heygen.com/v2/video/talking_photo
+2025-11-05 18:06:19.575 | WARNING  | routers.papers:process_job:129 - HeyGen failed; falling back to static video maker
+2025-11-05 18:06:19.575 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 18:06:58.628 | INFO     | services.video_maker:make_video_from_scenes:96 - Concatenating video clips...
+2025-11-05 18:06:58.640 | INFO     | services.video_maker:make_video_from_scenes:99 - Writing video to outputs\video_21ada3dc8b1e469cb77e00eb37379e08.mp4...
+2025-11-05 18:21:03.103 | INFO     | services.video_maker:make_video_from_scenes:116 - Video created successfully: outputs\video_21ada3dc8b1e469cb77e00eb37379e08.mp4
+2025-11-05 18:21:03.134 | WARNING  | routers.papers:run_with_timeout:86 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 18:21:14.693 | INFO     | main:<module>:60 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:21:14.693 | INFO     | main:<module>:61 - GEMINI_API_KEY configured: No
+2025-11-05 18:21:14.693 | INFO     | main:on_startup:105 - Starting Paper2Video API...
+2025-11-05 18:21:14.709 | INFO     | main:on_startup:110 - Application started successfully
+2025-11-05 18:21:18.320 | INFO     | main:on_shutdown:116 - Shutting down Paper2Video API...
+2025-11-05 18:21:39.977 | INFO     | routers.papers:upload_paper:68 - Queued PDF for processing: 36c3ead3-45fe-44aa-b8ea-fb5a7ff264b4.pdf
+2025-11-05 18:21:47.693 | WARNING  | routers.papers:run_with_timeout:86 - Step 'segment_paper' failed or timed out: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-11-05 18:21:50.628 | WARNING  | routers.papers:run_with_timeout:86 - Step 'generate_video_script' failed or timed out: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-11-05 18:21:53.652 | WARNING  | routers.papers:run_with_timeout:86 - Step 'classify_field_with_gemini' failed or timed out: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-11-05 18:21:56.943 | WARNING  | routers.papers:run_with_timeout:86 - Step 'extract_keywords' failed or timed out: 
+  No API_KEY or ADC found. Please either:
+    - Set the `GOOGLE_API_KEY` environment variable.
+    - Manually pass the key with `genai.configure(api_key=my_api_key)`.
+    - Or set up Application Default Credentials, see https://ai.google.dev/gemini-api/docs/oauth for more information.
+2025-11-05 18:21:56.943 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 18:21:59.010 | INFO     | services.video_maker:make_video_from_scenes:96 - Concatenating video clips...
+2025-11-05 18:21:59.012 | INFO     | services.video_maker:make_video_from_scenes:99 - Writing video to outputs\video_f9175653e238429db50c3f9955f86cc0.mp4...
+2025-11-05 18:22:13.975 | INFO     | services.video_maker:make_video_from_scenes:116 - Video created successfully: outputs\video_f9175653e238429db50c3f9955f86cc0.mp4
+2025-11-05 18:22:13.975 | ERROR    | services.gemini_service:summarize_with_gemini:81 - Error generating summary: GEMINI_API_KEY not configured
+2025-11-05 18:22:13.975 | WARNING  | routers.papers:run_with_timeout:86 - Step 'summarize_with_gemini' failed or timed out: GEMINI_API_KEY not configured
+2025-11-05 18:25:48.683 | INFO     | main:on_shutdown:114 - Shutting down Paper2Video API...
+2025-11-05 18:25:53.383 | INFO     | main:<module>:60 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:25:53.384 | INFO     | main:<module>:61 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:25:53.391 | INFO     | main:on_startup:105 - Starting Paper2Video API...
+2025-11-05 18:25:53.401 | INFO     | main:on_startup:110 - Application started successfully
+2025-11-05 18:26:02.990 | INFO     | main:on_shutdown:114 - Shutting down Paper2Video API...
+2025-11-05 18:26:05.903 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:26:05.904 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:26:05.915 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:26:05.918 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:26:08.370 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:26:10.812 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:26:10.812 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:26:10.818 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:26:10.818 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:26:23.964 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:26:26.263 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:26:26.264 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:26:26.271 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:26:26.272 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:27:07.525 | INFO     | routers.papers:upload_paper:68 - Queued PDF for processing: 9fe1a5fd-6f2c-49ef-9321-33d855f0754a.pdf
+2025-11-05 18:29:25.951 | ERROR    | services.heygen_service:create_talking_photo_job:53 - HeyGen create job failed: 404 Client Error: NOT FOUND for url: https://api.heygen.com/v2/video/talking_photo
+2025-11-05 18:29:25.957 | WARNING  | routers.papers:process_job:129 - HeyGen failed; falling back to static video maker
+2025-11-05 18:29:25.959 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 18:30:12.364 | INFO     | services.video_maker:make_video_from_scenes:96 - Concatenating video clips...
+2025-11-05 18:30:12.379 | INFO     | services.video_maker:make_video_from_scenes:99 - Writing video to outputs\video_3b380a5b1b5146518c3aabeb7f2ae2cc.mp4...
+2025-11-05 18:46:48.960 | INFO     | services.video_maker:make_video_from_scenes:116 - Video created successfully: outputs\video_3b380a5b1b5146518c3aabeb7f2ae2cc.mp4
+2025-11-05 18:46:48.979 | WARNING  | routers.papers:run_with_timeout:86 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 18:54:13.795 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:54:23.921 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:54:23.924 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:54:23.946 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:54:23.972 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:54:26.841 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:54:31.390 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:54:31.390 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:54:31.398 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:54:31.398 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:54:44.947 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:54:49.267 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:54:49.272 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:54:49.289 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:54:49.290 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:55:00.527 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:55:05.388 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:55:05.388 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:55:05.414 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:55:05.425 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:55:13.601 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:55:27.490 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:55:27.491 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:55:27.499 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:55:27.499 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:55:36.500 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:55:40.109 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:55:40.116 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:55:40.125 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:55:40.125 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:55:44.883 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:55:48.593 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:55:48.593 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:55:48.601 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:55:48.610 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:56:07.758 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 18:56:09.768 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 18:56:09.769 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 18:56:09.773 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 18:56:09.776 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 18:59:36.226 | INFO     | routers.papers:upload_paper:67 - Queued PDF for processing: da9ec597-8296-4df5-b825-ce8942d1bcc3.pdf
+2025-11-05 19:00:43.137 | ERROR    | services.heygen_service:create_avatar_video_job:63 - HeyGen create job failed: 401 Client Error: UNAUTHORIZED for url: https://api.heygen.com/v2/video/generate
+2025-11-05 19:00:43.137 | ERROR    | services.heygen_service:create_avatar_video_job:65 - Response: {"data":null,"error":{"code":"internal_error","message":"Unauthorized"}}
+
+2025-11-05 19:00:43.137 | WARNING  | routers.papers:process_job:130 - HeyGen failed; falling back to static video maker
+2025-11-05 19:00:43.137 | INFO     | services.video_maker:make_video_from_scenes:26 - Creating video with 1 scenes
+2025-11-05 19:01:34.611 | INFO     | services.video_maker:make_video_from_scenes:96 - Concatenating video clips...
+2025-11-05 19:01:34.639 | INFO     | services.video_maker:make_video_from_scenes:99 - Writing video to outputs\video_98b6975cfa344f0bb49af3e19fa543c2.mp4...
+2025-11-05 19:21:45.691 | INFO     | services.video_maker:make_video_from_scenes:116 - Video created successfully: outputs\video_98b6975cfa344f0bb49af3e19fa543c2.mp4
+2025-11-05 19:21:45.722 | WARNING  | routers.papers:run_with_timeout:85 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 19:21:52.051 | INFO     | main:on_shutdown:118 - Shutting down Paper2Video API...
+2025-11-05 19:21:56.846 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 19:21:56.846 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 19:21:56.846 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 19:21:56.846 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 19:22:29.056 | INFO     | main:<module>:64 - CORS configured with origins: ['http://localhost:8501', 'http://localhost:8502', 'http://127.0.0.1:8501', 'http://127.0.0.1:8502', 'http://localhost:8000', 'http://127.0.0.1:8000']
+2025-11-05 19:22:29.056 | INFO     | main:<module>:65 - GEMINI_API_KEY configured: Yes
+2025-11-05 19:22:29.056 | INFO     | main:on_startup:109 - Starting Paper2Video API...
+2025-11-05 19:22:29.056 | INFO     | main:on_startup:114 - Application started successfully
+2025-11-05 19:22:48.502 | INFO     | routers.papers:upload_paper:66 - Queued PDF for processing: efe3ae59-8bf5-42ec-b85a-5ff6273fe9a9.pdf
+2025-11-05 19:23:43.637 | INFO     | services.video_maker:make_video_from_scenes:25 - Creating video with 1 scenes
+2025-11-05 19:24:36.246 | INFO     | services.video_maker:make_video_from_scenes:83 - Concatenating video clips...
+2025-11-05 19:24:36.262 | INFO     | services.video_maker:make_video_from_scenes:86 - Writing video to outputs\video_aa3da37b0fe240c1a5d26a0c8a3826b4.mp4...
+2025-11-05 19:42:34.593 | INFO     | services.video_maker:make_video_from_scenes:103 - Video created successfully: outputs\video_aa3da37b0fe240c1a5d26a0c8a3826b4.mp4
+2025-11-05 19:42:34.608 | WARNING  | routers.papers:run_with_timeout:84 - Step 'make_video_from_scenes' failed or timed out: 
+2025-11-05 19:51:33.161 | INFO     | routers.trends:trending:17 - Fetching trending papers: category=cs.LG, limit=10
+2025-11-05 19:51:34.467 | INFO     | services.arxiv_service:fetch_trending:41 - Fetched 10 papers from arXiv
+2025-11-05 19:54:15.610 | INFO     | routers.trends:trending:17 - Fetching trending papers: category=cs.LG, limit=10
+2025-11-05 19:54:16.809 | INFO     | services.arxiv_service:fetch_trending:41 - Fetched 10 papers from arXiv
+2025-11-05 20:04:28.969 | INFO     | routers.trends:trending:17 - Fetching trending papers: category=cs.AI, limit=10
+2025-11-05 20:04:30.565 | INFO     | services.arxiv_service:fetch_trending:41 - Fetched 10 papers from arXiv

@@ -1,12 +1,14 @@
 import google.generativeai as genai
+import os
 from typing import List, Dict
 from config import settings
 from loguru import logger
 
-if not settings.GEMINI_API_KEY:
-    logger.warning("GEMINI_API_KEY not set")
+api_key = settings.GEMINI_API_KEY or os.getenv("GOOGLE_API_KEY")
+if not api_key:
+    logger.warning("GEMINI_API_KEY/GOOGLE_API_KEY not set")
 else:
-    genai.configure(api_key=settings.GEMINI_API_KEY)
+    genai.configure(api_key=api_key)
 
 _resolved_model_name = None
 
@@ -147,10 +149,15 @@ def generate_video_script(sections: List[Dict[str, str]]) -> List[Dict[str, str]
     """
     model = _get_model()
     joined = "\n\n".join([f"{s['title']}: {s['summary']}" for s in sections])
+    dialect_instruction = """
+    - narration: Use Egyptian Arabic colloquial (عامية مصرية) with simple natural phrasing
+    """ if getattr(settings, "ARABIC_DIALECT", "MSA").lower() in ["egyptian", "eg", "egy"] else """
+    - narration: Voice-over narration text (in Modern Standard Arabic, simple and clear)
+    """
     prompt = f"""Convert the following summaries into a short educational video script.
     For each scene provide:
     - overlay: Short text to display on screen (in Arabic)
-    - narration: Voice-over narration text (in Modern Standard Arabic, simple and clear)
+    {dialect_instruction}
     
     Return the result as a JSON list with elements containing only "overlay" and "narration" keys.
     All text must be in Arabic.

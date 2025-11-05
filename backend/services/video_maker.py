@@ -7,7 +7,7 @@ os.environ["IMAGEMAGICK_BINARY"] = r"C:\Program Files\ImageMagick-7.1.2-Q16-HDRI
 os.environ["IMAGE_MAGICK_CONVERT"] = os.environ["IMAGEMAGICK_BINARY"]
 
 from moviepy.editor import TextClip, concatenate_videoclips, CompositeVideoClip, AudioFileClip, ColorClip
-from gtts import gTTS
+from services.tts_service import synthesize_speech
 
 def _estimate_duration(text: str) -> float:
     # Rough estimate: 140 wpm => ~2.33 wps => seconds = words / 2.33
@@ -34,16 +34,17 @@ def make_video_from_scenes(scenes: List[Dict[str, str]], output_path: str = "out
             
             duration = _estimate_duration(narration)
 
-            # TTS audio
-            audio_path = os.path.join(temp_dir, f"scene_{idx}.mp3")
-            try:
-                tts = gTTS(text=narration, lang='ar', slow=False)
-                tts.save(audio_path)
-                audio = AudioFileClip(audio_path)
-                actual_duration = max(duration, audio.duration)
-            except Exception as e:
-                logger.error(f"TTS error for scene {idx}: {e}")
-                # Fallback: create silent clip
+            # TTS audio via provider
+            audio_path = synthesize_speech(narration)
+            if audio_path and os.path.exists(audio_path):
+                try:
+                    audio = AudioFileClip(audio_path)
+                    actual_duration = max(duration, audio.duration)
+                except Exception as e:
+                    logger.error(f"Audio load error for scene {idx}: {e}")
+                    audio = None
+                    actual_duration = duration
+            else:
                 audio = None
                 actual_duration = duration
 
@@ -117,3 +118,4 @@ def make_video_from_scenes(scenes: List[Dict[str, str]], output_path: str = "out
         except Exception as e:
             logger.warning(f"Could not cleanup temp directory: {e}")
 
+                    

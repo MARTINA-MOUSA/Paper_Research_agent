@@ -124,10 +124,12 @@ def classify_text(text):
 
 def fetch_trending(category="cs.LG", limit=10):
     try:
-        response = requests.get(f"{API_BASE_URL}/trends/trending", params={"category": category, "limit": limit}, timeout=30)
+        response = requests.get(f"{API_BASE_URL}/trends/trending", params={"category": category, "limit": limit}, timeout=180)
         return response
     except requests.exceptions.ConnectionError:
         st.error("❌ Cannot connect to backend API. Please make sure the backend server is running on port 8000.")
+    except requests.exceptions.Timeout:
+        st.error("⏱️ Request timed out. The backend is processing a large number of papers. Please try again or reduce the limit.")
     except Exception as e:
         st.error(f"Error fetching trends: {str(e)}")
 
@@ -177,7 +179,7 @@ def upload_paper_page(api_healthy):
             import time
             while True:
                 try:
-                    r = requests.get(f"{API_BASE_URL}/papers/status/{job_id}", timeout=30)
+                    r = requests.get(f"{API_BASE_URL}/papers/status/{job_id}", timeout=120)
                     if r.status_code != 200:
                         status_text.error("Failed to fetch job status")
                         break
@@ -238,9 +240,15 @@ def upload_paper_page(api_healthy):
                     else:
                         status_text.info(f"Status: {status} ({p}%)")
                     time.sleep(2)
+                except requests.exceptions.Timeout:
+                    # Non-fatal: keep polling
+                    status_text.info("Status: polling timed out, retrying...")
+                    time.sleep(2)
+                    continue
                 except Exception as e:
                     status_text.error(f"Polling error: {e}")
-                    break
+                    time.sleep(2)
+                    continue
         else:
             st.error("❌ Failed to process paper.")
 
@@ -283,8 +291,38 @@ def trending_papers_page(api_healthy):
             response = fetch_trending(category=category, limit=limit)
             if response and response.status_code == 200:
                 data = response.json()
-                st.success(f"✅ Found {data.get('count', len(data.get('items', [])))} papers")
-                st.json(data)
+                items = data.get('items', [])
+                count = data.get('count', len(items))
+                st.success(f"✅ Found {count} papers")
+                
+                # Display each paper in a formatted way
+                for idx, paper in enumerate(items, 1):
+                    with st.container():
+                        # Title
+                        st.markdown(f"### {idx}. {paper.get('title', 'Untitled')}")
+                        
+                        # Summary
+                        summary = paper.get('summary', 'No summary available')
+                        st.markdown(f"**Summary:** {summary}")
+                        
+                        # Link and Source
+                        col1, col2 = st.columns([3, 1])
+                        with col1:
+                            link = paper.get('link', '')
+                            if link:
+                                st.markdown(f"🔗 [Read Paper]({link})")
+                        with col2:
+                            published = paper.get('published', '')
+                            if published:
+                                # Parse date if needed
+                                st.markdown(f"📅 **Published:** {published}")
+                        
+                        # Field (if available)
+                        field = paper.get('field', '')
+                        if field:
+                            st.markdown(f"🏷️ **Field:** {field}")
+                        
+                        st.markdown("---")
             else:
                 st.error("❌ Failed to fetch trending papers.")
 

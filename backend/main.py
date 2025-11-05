@@ -10,7 +10,6 @@ from config import settings
 from loguru import logger
 import sys
 
-load_dotenv()
 
 # Configure logging
 logger.remove()
@@ -25,6 +24,9 @@ logger.add(
     retention="7 days",
     level=settings.LOG_LEVEL
 )
+
+# Load .env before reading settings elsewhere
+load_dotenv()
 
 app = FastAPI(
     title="Paper2Video API",

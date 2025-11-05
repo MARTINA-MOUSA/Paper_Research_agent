@@ -19,6 +19,8 @@ sentencepiece
 # Video and audio generation
 moviepy
 gTTS
+azure-cognitiveservices-speech
+elevenlabs
 # Configuration
 python-dotenv
 pydantic
